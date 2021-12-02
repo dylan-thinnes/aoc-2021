@@ -12,6 +12,12 @@ case "$1 $2" in
   "2 perl")
     perl sol2.pl < input
     ;;
+  "1 haskell")
+    (cd ./hs; cabal run sol1) < input
+    ;;
+  "2 haskell")
+    (cd ./hs; cabal run sol2) < input
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
