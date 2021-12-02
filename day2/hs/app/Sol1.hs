@@ -32,4 +32,4 @@ summary :: Submarine -> String
 summary sub = unlines [show sub, show (sub ^. depth * sub ^. distance)]
 
 main :: IO ()
-main = interact $ summary . foldr (run . parse) start . reverse . map words . lines
+main = interact $ summary . foldl (flip run) start . map (parse . words) . lines
