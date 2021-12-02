@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cd "./day$1" && ./run $2 $3
+cd $(printf "%02d" "$1") && ./run $2 $3
