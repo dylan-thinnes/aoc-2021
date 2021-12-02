@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+case "$1 $2" in
+  "1 " | "1 awk")
+    awk -f sol1.awk < input
+    ;;
+  "2 " | "2 awk")
+    awk -f sol2.awk < input
+    ;;
+  "1 perl")
+    perl sol1.pl < input
+    ;;
+  "2 perl")
+    perl sol2.pl < input
+    ;;
+  *)
+    echo "Unrecognized solution '$1 $2'" 1>&2
+    exit 1
+    ;;
+esac
