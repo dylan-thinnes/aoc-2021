@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 case "$1 $2" in
   "1 " | "1 awk")
-    awk -f awk/sol1.awk < input
+    awk -f awk/sol1 < input
     ;;
   "2 " | "2 awk")
-    awk -f awk/sol2.awk < input
+    awk -f awk/sol2 < input
     ;;
   "1 perl")
-    perl perl/sol1.pl < input
+    perl perl/sol1 < input
     ;;
   "2 perl")
-    perl perl/sol2.pl < input
+    perl perl/sol2 < input
     ;;
   "1 haskell")
     (cd ./haskell; cabal run sol1) < input
