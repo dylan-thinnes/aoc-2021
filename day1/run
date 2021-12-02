@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 case "$1 $2" in
   "1 " | "1 nix")
-    nix eval -f sol1.nix gt-last-count
+    nix eval -f nix/sol1.nix gt-last-count
     ;;
   "2 " | "2 nix")
-    nix eval -f sol2.nix gt-last-count
+    nix eval -f nix/sol2.nix gt-last-count
     ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
