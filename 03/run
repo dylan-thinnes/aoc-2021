@@ -8,6 +8,14 @@ case "$1 $2" in
     cd octave
     octave ./sol2.m
     ;;
+  "1 " | "1 j")
+    cd j
+    cat ./sol1.ijs | ijconsole
+    ;;
+  "2 " | "2 j")
+    cd j
+    cat ./sol2.ijs | ijconsole
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
