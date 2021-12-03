@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-(sed 's/down/y +=/;s/up/y -=/;s/forward/x +=/'; echo "x*y") | bc
+(sed 's/down/y +=/;s/up/y -=/;s/forward/x +=/'; echo; echo "x*y") | bc
