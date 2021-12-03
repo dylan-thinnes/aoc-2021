@@ -13,6 +13,7 @@ Languages and solutions so far can be got by running `./summarize`.
 awk     | |█|
 haskell | |█|
 j       |█| |
+jq      |█| |
 nix     |█| |
 perl    | |█|
 sh      | |█|
