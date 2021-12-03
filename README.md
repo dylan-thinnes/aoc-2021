@@ -11,6 +11,7 @@ Languages and solutions so far can be got by running `./summarize`.
 ```
         |1|2|
 awk     | |█|
+bash    | |█|
 haskell | |█|
 j       |█| |
 nix     |█| |
