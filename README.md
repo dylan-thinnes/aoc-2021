@@ -11,11 +11,11 @@ Languages and solutions so far can be got by running `./summarize`.
 ```
         |1|2|
 awk     | |█|
-bash    | |█|
 haskell | |█|
 j       |█| |
 nix     |█| |
 perl    | |█|
+sh      | |█|
 ```
 
 Light/medium fill means solution 1 only or solution 2 only.

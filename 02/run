@@ -18,11 +18,11 @@ case "$1 $2" in
   "2 haskell")
     (cd ./haskell; cabal run sol2) < input
     ;;
-  "1 bash")
-    ./bash/sol1 < input
+  "1 sh")
+    ./sh/sol1 < input
     ;;
-  "2 bash")
-    ./bash/sol2 < input
+  "2 sh")
+    ./sh/sol2 < input
     ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
