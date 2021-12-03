@@ -6,6 +6,10 @@ case "$1 $2" in
   "2 " | "2 nix")
     nix eval -f nix/sol2 gt-last-count
     ;;
+  "1 j")
+    cd j
+    cat sol1 | ijconsole
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
