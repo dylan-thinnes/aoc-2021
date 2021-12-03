@@ -14,6 +14,12 @@ case "$1 $2" in
     cd j
     cat sol2.j | ijconsole
     ;;
+  "1 jq")
+    ./jq/sol1 < input
+    ;;
+  "2 jq")
+    ./jq/sol2 < input
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
