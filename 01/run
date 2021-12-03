@@ -10,6 +10,10 @@ case "$1 $2" in
     cd j
     cat sol1.j | ijconsole
     ;;
+  "2 j")
+    cd j
+    cat sol2.j | ijconsole
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
