@@ -8,7 +8,7 @@ case "$1 $2" in
     ;;
   "1 j")
     cd j
-    cat sol1 | ijconsole
+    cat sol1.j | ijconsole
     ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
