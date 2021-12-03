@@ -26,7 +26,7 @@ Languages and solutions so far can be got by running `./summarize`.
         |1|2|3|
 awk     | |█| |
 haskell | |█| |
-j       |█| | |
+j       |█| |█|
 jq      |█| | |
 nix     |█| | |
 octave  | | |█|
