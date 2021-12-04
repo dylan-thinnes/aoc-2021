@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+case "$1 $2" in
+  "1 " | "1 octave")
+    cd octave
+    octave ./sol1.m
+    ;;
+  "2 " | "2 octave")
+    cd octave
+    octave ./sol2.m
+    ;;
+  *)
+    echo "Unrecognized solution '$1 $2'" 1>&2
+    exit 1
+    ;;
+esac
