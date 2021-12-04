@@ -14,7 +14,7 @@ oxygen = rate id
 co2 = rate not
 
 dominantBit :: [Bool] -> Bool
-dominantBit bv = 0.5 <= fromIntegral (length (filter id bv)) / fromIntegral (length bv)
+dominantBit bv = length (filter id bv) >= length (filter not bv)
 
 rate :: (Bool -> Bool) -> [[Bool]] -> [Bool]
 rate mod [] = []
