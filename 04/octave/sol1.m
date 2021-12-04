@@ -38,4 +38,6 @@ for callout = callouts
 end
 
 # Calculate puzzle output (sum of unmarked nums * last marked num)
-sum((boards .* !board_flags)(winners,:)) * callout
+total = sum((boards .* !board_flags)(winners,:))
+callout
+total * callout
