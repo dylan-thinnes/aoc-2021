@@ -31,4 +31,4 @@ parse :: String -> [[Bool]]
 parse = (map . map) ('1' ==) . lines
 
 bitsToInt :: [Bool] -> Int
-bitsToInt bv = sum $ zipWith (\n b -> fromEnum b * 2 ^ n) [0..] (reverse bv)
+bitsToInt = foldl (\b a -> b * 2 + fromEnum a) 0
