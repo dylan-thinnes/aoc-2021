@@ -1,12 +1,10 @@
 module Main where
 
-import Data.List (transpose)
-
 main :: IO ()
 main = interact (show . top . parse)
 
 top :: [[Bool]] -> Int
-top xss = bitsToInt (oxygen (transpose xss)) * bitsToInt (co2 (transpose xss))
+top xss = bitsToInt (oxygen xss) * bitsToInt (co2 xss)
 
 -- Ratings for oxygen, co2
 oxygen, co2 :: [[Bool]] -> [Bool]
@@ -17,14 +15,16 @@ dominantBit :: [Bool] -> Bool
 dominantBit bv = length (filter id bv) >= length (filter not bv)
 
 rate :: (Bool -> Bool) -> [[Bool]] -> [Bool]
-rate mod [] = []
-rate mod xss@(topLayer:_)
-  | length topLayer == 1 = map head xss
+rate mod [] = error "No inputs left!"
+rate mod [bv] = bv
+rate mod bvs
+  | any null bvs = []
   | otherwise =
-    let d = mod $ dominantBit topLayer
-        subset = transpose [tail | head:tail <- transpose xss, head == d ]
+    let topLayer = map head bvs
+        targetBit = mod $ dominantBit topLayer
+        subset = [tail | head:tail <- bvs, head == targetBit ]
     in
-    d : rate mod subset
+    targetBit : rate mod subset
 
 -- Parse & Print
 parse :: String -> [[Bool]]
