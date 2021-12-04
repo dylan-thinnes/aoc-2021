@@ -6,7 +6,7 @@ main :: IO ()
 main = interact (show . top . parse)
 
 top :: [[Bool]] -> Int
-top xss = bvToInt (oxygen (transpose xss)) * bvToInt (co2 (transpose xss))
+top xss = bitsToInt (oxygen (transpose xss)) * bitsToInt (co2 (transpose xss))
 
 -- Ratings for oxygen, co2
 oxygen, co2 :: [[Bool]] -> [Bool]
@@ -30,5 +30,5 @@ rate mod xss@(topLayer:_)
 parse :: String -> [[Bool]]
 parse = (map . map) ('1' ==) . lines
 
-bvToInt :: [Bool] -> Int
-bvToInt bv = sum $ zipWith (\n b -> fromEnum b * 2 ^ n) [0..] (reverse bv)
+bitsToInt :: [Bool] -> Int
+bitsToInt bv = sum $ zipWith (\n b -> fromEnum b * 2 ^ n) [0..] (reverse bv)

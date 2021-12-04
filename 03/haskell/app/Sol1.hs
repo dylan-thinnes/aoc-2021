@@ -12,10 +12,10 @@ top :: [[Bool]] -> Int
 top xss =
   let bv = dominantBits xss
   in
-  bvToInt bv * bvToInt (not <$> bv)
+  bitsToInt bv * bitsToInt (not <$> bv)
 
-bvToInt :: [Bool] -> Int
-bvToInt bv = sum $ zipWith (\n b -> fromEnum b * 2 ^ n) [0..] (reverse bv)
+bitsToInt :: [Bool] -> Int
+bitsToInt bv = sum $ zipWith (\n b -> fromEnum b * 2 ^ n) [0..] (reverse bv)
 
 dominantBits :: [[Bool]] -> [Bool]
 dominantBits bvs =
