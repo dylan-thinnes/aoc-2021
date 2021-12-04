@@ -15,16 +15,16 @@ dominantBit :: [Bool] -> Bool
 dominantBit bv = 0 <= sum [if b then 1 else -1 | b <- bv]
 
 rate :: (Bool -> Bool) -> [[Bool]] -> [Bool]
-rate mod [] = error "No inputs left!"
-rate mod [bv] = bv
-rate mod bvs
+rate _ [] = error "No inputs left!"
+rate _ [bv] = bv
+rate modifyTarget bvs
   | any null bvs = []
   | otherwise =
     let topLayer = map head bvs
-        targetBit = mod $ dominantBit topLayer
+        targetBit = modifyTarget $ dominantBit topLayer
         subset = [tail | head:tail <- bvs, head == targetBit ]
     in
-    targetBit : rate mod subset
+    targetBit : rate modifyTarget subset
 
 -- Parse & Print
 parse :: String -> [[Bool]]
