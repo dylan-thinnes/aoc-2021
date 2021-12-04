@@ -16,6 +16,14 @@ case "$1 $2" in
     cd j
     cat ./sol2.ijs | ijconsole
     ;;
+  "1 " | "1 haskell")
+    cd haskell
+    cabal run sol1 < ../input
+    ;;
+  "2 " | "2 haskell")
+    cd haskell
+    cabal run sol2 < ../input
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
