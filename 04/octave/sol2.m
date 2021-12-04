@@ -1,3 +1,4 @@
+# Read inputs
 src = strsplit(fileread("../input"), "\n\n");
 callouts = str2num(src{1,1});
 cboards = cellfun(@str2num, src(1,2:end), 'UniformOutput', false);
@@ -5,6 +6,7 @@ for i = 1:length(cboards)
   boards(i,1:25) = cboards{i}(:);
 end
 
+# Create kernels
 row_kernels = ones(5,1) * (1:5);
 
 row1 = 1 == row_kernels;
@@ -26,14 +28,16 @@ kernels = cat(2
 
 board_flags = false(size(boards));
 
+# Iteratively find winners
 winners = false;
 for callout = callouts
   board_flags = board_flags | boards == callout;
   previous_winners = winners;
   winners = any(board_flags * kernels == 5, 2);
-  if all(winners)
+  if all(winners) # Until everyone's a winner
     break
   end
 end
 
+# Calculate puzzle output (sum of unmarked nums * last marked num)
 sum((boards .* !board_flags)(logical(winners - previous_winners),:)) * callout
