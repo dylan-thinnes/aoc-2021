@@ -47,6 +47,7 @@ fn main() {
                     }
                 }
             }
+            total -= 1;
 
             println!("{:?}", board);
             println!("Winning: {}", board.winning());
