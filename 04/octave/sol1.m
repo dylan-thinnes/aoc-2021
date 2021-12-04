@@ -19,13 +19,9 @@ col3 = row3';
 col4 = row4';
 col5 = row5';
 
-#diag1 = eye(5)
-#diag2 = flip(diag1)
-
 kernels = cat(2
     ,row1(:), row2(:), row3(:), row4(:), row5(:)
     ,col1(:), col2(:), col3(:), col4(:), col5(:)
-    #,diag1(:), diag2(:)
   );
 
 board_flags = false(size(boards));
