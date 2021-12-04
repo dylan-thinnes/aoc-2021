@@ -12,7 +12,7 @@ oxygen = rate id
 co2 = rate not
 
 dominantBit :: [Bool] -> Bool
-dominantBit bv = length (filter id bv) >= length (filter not bv)
+dominantBit bv = 0 <= sum [if b then 1 else -1 | b <- bv]
 
 rate :: (Bool -> Bool) -> [[Bool]] -> [Bool]
 rate mod [] = error "No inputs left!"
