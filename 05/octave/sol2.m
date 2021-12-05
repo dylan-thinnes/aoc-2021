@@ -9,12 +9,16 @@ field = zeros(width, height);
 
 # Update indices
 for l = inp'
-  xr = l(1):((l(1)<l(3))*2-1):l(3);
-  yr = l(2):((l(2)<l(4))*2-1):l(4);
+  xstep = (l(1) < l(3)) * 2 - 1;
+  xrange = l(1):xstep:l(3);
+
+  ystep = (l(2) < l(4)) * 2 - 1;
+  yrange = l(2):ystep:l(4);
+
   if l(1) == l(3) || l(2) == l(4)
-    field(xr, yr) += 1;
+    field(xrange, yrange) += 1;
   else
-    field(sub2ind(size(field), xr, yr)) += 1;
+    field(sub2ind(size(field), xrange, yrange)) += 1;
   end
 end
 
