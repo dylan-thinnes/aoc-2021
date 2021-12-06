@@ -19,10 +19,11 @@ outer: for my $callout (@callouts) {
   for (@boards) { s/(^|\W)$callout(\W)/$1a$2/g }
 
   # Check for any full rows
-  $winner = 0;
+  $ii = 0;
   for (@boards) {
+    $winner = int $ii / 6;
     last outer if (m/a a a a a/);
-    $winner++;
+    $ii++;
   }
 
   # Check for any full columns
@@ -36,7 +37,7 @@ outer: for my $callout (@callouts) {
     }
 
     if ((join "", @pat) =~ m/xxxxx/) {
-      $winner = $-[0] / 6;
+      $winner = int $-[0] / 6;
       last outer;
     }
   }
