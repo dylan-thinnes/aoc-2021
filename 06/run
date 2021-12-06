@@ -6,6 +6,12 @@ case "$1 $2" in
   "2 " | "2 ruby")
     ruby ./ruby/sol2.rb <input
     ;;
+  "1 " | "1 perl")
+    perl ./perl/sol1.pl <input
+    ;;
+  "2 " | "2 perl")
+    perl ./perl/sol2.pl <input
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
