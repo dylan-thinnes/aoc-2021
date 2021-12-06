@@ -1,0 +1,22 @@
+# Load fish indices
+zsd [Si z0<x]sx lxx
+
+# Count fish
+0 0 0 0 0 0 0 0 0
+[
+  li1+R1+
+  _1li-R
+  Lis_
+  ld1-sdld0<x
+]sx lxx
+
+# Run 80 generations
+256sd
+[
+  stlt_9R
+  7Rlt+_7R
+
+  ld1-sdld0<x
+]sx lxx
+
+++++++++f

@@ -12,6 +12,12 @@ case "$1 $2" in
   "2 " | "2 perl")
     perl ./perl/sol2.pl <input
     ;;
+  "1 " | "1 dc")
+    dc -f <(tr ',' '\n' <input) dc/sol1.dc
+    ;;
+  "2 " | "2 dc")
+    dc -f <(tr ',' '\n' <input) dc/sol2.dc
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
