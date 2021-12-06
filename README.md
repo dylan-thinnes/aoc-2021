@@ -25,12 +25,12 @@ Languages and solutions so far can be got by running `./summarize`.
 ```
         |1|2|3|4|5|
 awk     | |█| | | |
-haskell | |█|█| | |
+haskell |█|█|█| | |
 j       |█| |█| | |
 jq      |█| | | | |
 nix     |█| | | | |
 octave  | | |█|█|█|
-perl    | |█| | | |
+perl    | |█| |█| |
 rust    | | | |█| |
 sh      | |█| | | |
 ```
