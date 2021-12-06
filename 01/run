@@ -20,6 +20,12 @@ case "$1 $2" in
   "2 jq")
     ./jq/sol2 < input
     ;;
+  "1 haskell")
+    runghc ./haskell/sol1.hs < input
+    ;;
+  "2 haskell")
+    runghc ./haskell/sol2.hs < input
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
