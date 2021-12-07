@@ -23,18 +23,19 @@ In the same way as [last year](https://github.com/dylan-thinnes/aoc-2020), I do 
 Languages and solutions so far can be got by running `./summarize`.
 
 ```
-        |1|2|3|4|5|6|
-awk     | |█| | | | |
-dc      | | | | | |█|
-haskell |█|█|█| | | |
-j       |█| |█| | | |
-jq      |█| | | | | |
-nix     |█| | | | | |
-octave  | | |█|█|█| |
-perl    | |█| |█| |█|
-ruby    | | | | | |█|
-rust    | | | |█| | |
-sh      | |█| | | | |
+          |1|2|3|4|5|6|
+awk       | |█| | | | |
+brainfuck | | | | | |░|
+dc        | | | | | |█|
+haskell   |█|█|█| | | |
+j         |█| |█| | | |
+jq        |█| | | | | |
+nix       |█| | | | | |
+octave    | | |█|█|█| |
+perl      | |█| |█| |█|
+ruby      | | | | | |█|
+rust      | | | |█| | |
+sh        | |█| | | | |
 ```
 
 Light/medium fill means solution 1 only or solution 2 only.
