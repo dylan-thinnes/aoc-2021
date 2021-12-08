@@ -6,6 +6,12 @@ case "$1 $2" in
   "2 " | "2 python")
     python3 ./python/sol2.py <input
     ;;
+  "1 " | "1 awk")
+    awk -f ./awk/sol1.awk <input
+    ;;
+  "2 " | "2 awk")
+    awk -f ./awk/sol2.awk <input
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
