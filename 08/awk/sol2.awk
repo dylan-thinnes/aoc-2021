@@ -7,32 +7,29 @@ END { print total }
 
 # Deciphering mode
 # Find matching 5-segment digits
-mode && /^.{5}$/ { find_5 = 1 }
+mode && /^.{5}$/                               { find_5 = 1 }
 
-mode && find_5 && /^.{5}$/ && $0 ~ pats["7_3"] { digits[mode] = 3; find_5 = 0 }
-mode && find_5 && /^.{5}$/ && $0 ~ pats["4_3"] { digits[mode] = 5; find_5 = 0 }
-mode && find_5                                 { digits[mode] = 2; find_5 = 0 }
+mode && find_5 && /^.{5}$/ && $0 ~ pats["7_3"] { find_5 = 0; result += 3 }
+mode && find_5 && /^.{5}$/ && $0 ~ pats["4_3"] { find_5 = 0; result += 5 }
+mode && find_5                                 { find_5 = 0; result += 2 }
 
 # Find matching 6-segment digits
-mode && /^.{6}$/ { find_6 = 1 }
+mode && /^.{6}$/                               { find_6 = 1 }
 
-mode && find_6 && /^.{6}$/ && $0 ~ pats["4_4"] { digits[mode] = 9; find_6 = 0 }
-mode && find_6 && /^.{6}$/ && $0 ~ pats["7_3"] { digits[mode] = 0; find_6 = 0 }
-mode && find_6                                 { digits[mode] = 6; find_6 = 0 }
+mode && find_6 && /^.{6}$/ && $0 ~ pats["4_4"] { find_6 = 0; result += 9 }
+mode && find_6 && /^.{6}$/ && $0 ~ pats["7_3"] { find_6 = 0; result += 0 }
+mode && find_6                                 { find_6 = 0; result += 6 }
 
 # Print matching constant-segment digits
-mode && /^.{2}$/ { digits[mode] = 1 }
-mode && /^.{4}$/ { digits[mode] = 4 }
-mode && /^.{3}$/ { digits[mode] = 7 }
-mode && /^.{7}$/ { digits[mode] = 8 }
+mode &&           /^.{2}$/                     {             result += 1 }
+mode &&           /^.{4}$/                     {             result += 4 }
+mode &&           /^.{3}$/                     {             result += 7 }
+mode &&           /^.{7}$/                     {             result += 8 }
 
-# Decrement mode & detect end of loop
-mode == 1 {
-  result = digits[4] * 1000 + digits[3] * 100 + digits[2] * 10 + digits[1]
-  print result
-  total += result
-}
-mode { mode -= 1 }
+# Decrement mode & Sum result at end of loop
+mode == 1 { print result; total += result; result = 0 }
+mode      { result *= 10 }
+mode      { mode -= 1 }
 
 # Switch modes on |
 /\|/ {
