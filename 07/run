@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+case "$1 $2" in
+  "1 " | "1 julia")
+    cd julia
+    julia ./sol1.jl
+    ;;
+  "2 " | "2 julia")
+    cd julia
+    julia ./sol2.jl
+    ;;
+  *)
+    echo "Unrecognized solution '$1 $2'" 1>&2
+    exit 1
+    ;;
+esac
