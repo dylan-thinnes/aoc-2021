@@ -23,8 +23,8 @@ def discern_digit(one, four, seven, post):
             return 0
         else:
             return 6
-    else:
-        raise Exception(f"Invalid input with {len(post)} digits!")
+
+    raise Exception(f"Invalid input with {len(post)} digits!")
 
 total = 0
 for l in sys.stdin.readlines():
