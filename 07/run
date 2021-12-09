@@ -8,6 +8,14 @@ case "$1 $2" in
     cd julia
     julia ./sol2.jl
     ;;
+  "1 " | "1 octave")
+    cd octave
+    octave ./sol1.m
+    ;;
+  "2 " | "2 octave")
+    cd octave
+    octave ./sol2.m
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
