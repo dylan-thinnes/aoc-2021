@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+case "$1 $2" in
+  "1 " | "1 zig")
+    cd zig
+    zig build-exe ./sol1.zig
+    ./sol1 <../input
+    ;;
+  "2 " | "2 zig")
+    cd zig
+    zig build-exe ./sol2.zig
+    ./sol2 <../input
+    ;;
+  *)
+    echo "Unrecognized solution '$1 $2'" 1>&2
+    exit 1
+    ;;
+esac
