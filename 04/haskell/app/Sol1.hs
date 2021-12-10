@@ -4,8 +4,6 @@ module Main where
 import Data.Foldable (foldMap)
 import Data.Monoid (Sum (..))
 
-import Debug.Trace
-
 main :: IO ()
 main = do
   state <- parse <$> getContents
