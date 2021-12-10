@@ -14,7 +14,6 @@ for lang in $LANGS; do
     printf "%-${LONGEST_LANG}s " $lang
     echo -n "|"
     for day in `seq -w 1 $MAX_DAY`; do
-        day=$(printf "%02d" "$day")
         if   [[ -e ./$day/$lang/sol1 && -e ./$day/$lang/sol2 ]]; then echo -n "█|";
         elif [[ -e ./$day/$lang/sol1 ]]; then echo -n "░|";
         elif [[ -e ./$day/$lang/sol2 ]]; then echo -n "▒|";
