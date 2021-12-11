@@ -28,7 +28,7 @@ Languages and solutions so far can be got by running `./summarize`.
 awk       | |█| | | | | |█| | |
 brainfuck | | | | | |░| | | | |
 dc        | | | | | |█| | | | |
-haskell   |█|█|█| | | | | | | |
+haskell   |█|█|█|█| | | | | | |
 j         |█| |█| | | | | | | |
 jq        |█| | | | | | | | | |
 julia     | | | | | | |█| | | |
