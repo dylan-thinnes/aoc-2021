@@ -1,57 +1,44 @@
-fh = open("../input")
-inp = [[[int(c)] for c in list(line[:-1])] for line in fh.readlines()]
+import sys
 
-height = len(inp)
-width = len(inp[0])
+# Setup global state
+state = [[[int(c)] for c in list(line[:-1])] for line in sys.stdin.readlines()]
+height = len(state)
+width = len(state[0])
+total = 0
 
-def pretty():
-    print()
-    for row in inp:
-        for val in row:
-            if val[0] is None:
-                print("█", end="")
-            else:
-                print(f"{val[0]:x}", end="")
-        print()
-    print()
-
-pretty()
-
-flashes = 0
+# Step state forward by 1
 def step():
-    global inp, flashes
+    global state, total
 
-    frontier = set()
-    for y, row in enumerate(inp):
+    flashes = set()
+
+    # Increment everyone, find fresh flashes
+    for y, row in enumerate(state):
         for x, val in enumerate(row):
             val[0] += 1
-            if val[0] is not None and val[0] > 9:
-                frontier.add((x, y))
+            if val[0] > 9:
+                flashes.add((x, y))
+                val[0] = None
 
-    pretty()
-
-    while len(frontier) > 0:
-        new_frontier = set()
-        for x,y in frontier:
-            val = inp[y][x]
-            val[0] = None
-
-        for x,y in frontier:
-            val = inp[y][x]
-            flashes += 1
-            for dx in [-1,0,1]:
-                for dy in [-1,0,1]:
-                    if 0 <= (y+dy) < height and 0 <= (x+dx) < width:
-                        val = inp[y+dy][x+dx]
+    # Increment neighbours until no flashes are produced
+    while len(flashes) > 0:
+        next_flashes = set()
+        for cx, cy in flashes:
+            val = state[cy][cx]
+            total += 1
+            for x in [cx-1, cx, cx+1]:
+                for y in [cy-1, cy, cy+1]:
+                    if 0 <= y < height and 0 <= x < width:
+                        val = state[y][x]
                         if val[0] is not None:
                             val[0] += 1
                             if val[0] > 9:
-                                new_frontier.add((x+dx, y+dy))
-        frontier = new_frontier
+                                next_flashes.add((x, y))
+                                val[0] = None
+        flashes = next_flashes
 
-    pretty()
-
-    for row in inp:
+    # Turn all flashes into zeros
+    for row in state:
         for val in row:
             if val[0] is None:
                 val[0] = 0
@@ -60,4 +47,4 @@ for i in range(100):
     print(f"Step {i}")
     step()
 
-print(flashes)
+print(total)
