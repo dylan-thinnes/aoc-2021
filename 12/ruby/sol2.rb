@@ -20,16 +20,12 @@ def ant(cave, history, doubled)
 
   if cave == "end"
     $total += 1
-  elsif /^[[:lower:]]+$/.match cave and history.include? cave
+  elsif /[[:lower:]]/.match cave and history.include? cave
     if not doubled
-      for next_cave in $caverns[cave]
-        ant next_cave, new_history, true
-      end
+      $caverns[cave].each { ant _1, new_history, true }
     end
   else
-    for next_cave in $caverns[cave]
-      ant next_cave, new_history, doubled
-    end
+    $caverns[cave].each { ant _1, new_history, doubled }
   end
 end
 

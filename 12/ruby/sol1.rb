@@ -15,15 +15,13 @@ end
 
 $total = 0
 def ant(cave, history)
+  new_history = history.clone
+  new_history.add cave
+
   if cave == "end"
     $total += 1
-  elsif /^[[:lower:]]+$/.match cave and history.include? cave
-  else
-    new_history = history.clone
-    new_history.add cave
-    for next_cave in $caverns[cave]
-      ant next_cave, new_history
-    end
+  elsif not (/[[:lower:]]/.match cave and history.include? cave)
+    $caverns[cave].each { ant _1, new_history }
   end
 end
 
