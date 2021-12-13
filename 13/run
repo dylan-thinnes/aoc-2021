@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+case "$1 $2" in
+  "1 " | "1 nim")
+    nim r ./nim/sol1.nim <./input
+    ;;
+  "2 " | "2 nim")
+    nim r ./nim/sol2.nim <./input
+    ;;
+  *)
+    echo "Unrecognized solution '$1 $2'" 1>&2
+    exit 1
+    ;;
+esac
