@@ -1,16 +1,15 @@
 import sets
-import algorithm
-import sequtils
 import system/io
 import strscans
+import strutils
 
 type Hole = tuple[y: int, x: int]
 
-proc reflect(x: int, refl: bool, y: int): int =
-  if refl and x > y: 2 * y - x else: x
+proc reflect(a: int, refl: bool, b: int): int =
+  if refl and a > b: 2 * b - a else: a
 
+# Read holes, reflect on folds
 var holes: HashSet[Hole]
-
 for line in stdin.lines:
   var x, y, pos: int
   var dim: char
@@ -27,22 +26,16 @@ for line in stdin.lines:
       new_holes.incl(hole)
     holes = new_holes
 
-var ordered: seq[Hole] = holes.toSeq
-sort(ordered)
-var x, y = 0
+# Print image, constructed by indices into string
+var max_x, max_y = 0
+for hole in holes:
+  max_x = max_x.max(hole.x)
+  max_y = max_y.max(hole.y)
 
-for hole in ordered:
-  if hole.y > y:
-    for i in countup(1, hole.y - y):
-      stdout.write "\n"
-    y = hole.y
-    x = 0
+var field = (' '.repeat(max_x + 1) & "\n").repeat(max_y + 1)
 
-  if hole.x > x + 1:
-    for i in countup(1, hole.x - x - 1):
-      stdout.write " "
+for hole in holes:
+  var idx = hole.x + hole.y * (max_x + 2)
+  field[idx] = '#'
 
-  x = hole.x
-  stdout.write "█"
-
-stdout.write "\n"
+echo field
