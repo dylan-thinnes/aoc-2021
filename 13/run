@@ -6,6 +6,9 @@ case "$1 $2" in
   "2 " | "2 nim")
     nim r ./nim/sol2.nim <./input
     ;;
+  "2 " | "2 c")
+    ./c/sol2 <./input
+    ;;
   *)
     echo "Unrecognized solution '$1 $2'" 1>&2
     exit 1
