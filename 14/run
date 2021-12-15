@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+case "$1 $2" in
+  "1 " | "1 c")
+    gcc ./c/sol1.c
+    ./a.out <./input
+    rm a.out
+    ;;
+  "2 " | "2 c")
+    gcc ./c/sol2.c
+    ./a.out <./input
+    rm a.out
+    ;;
+  "1 " | "1 haskell")
+    cd ./haskell
+    cabal run sol1 <../input
+    ;;
+  *)
+    echo "Unrecognized solution '$1 $2'" 1>&2
+    exit 1
+    ;;
+esac
