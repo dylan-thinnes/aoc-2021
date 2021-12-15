@@ -24,9 +24,9 @@ main = do
   (starting:_:srcs) <- lines <$> getContents
   let rules = map parse srcs
   let iterations = iterate (apply rules) starting
-  let out = iterations !! 40
-  -- print out
+  let out = iterations !! 10
   let qtys = frequencies out
+  putStrLn out
   print qtys
   print $ maximum (M.elems qtys) - minimum (M.elems qtys)
   pure ()
